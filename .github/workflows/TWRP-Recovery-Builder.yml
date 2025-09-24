@@ -63,10 +63,16 @@ jobs:
       contents: write
     steps:
     - name: Check Out
-      uses: actions/checkout@v3
-      
-    - name: Display Inputs
-      run: |
+  uses: actions/checkout@v3
+
+- name: Очистка диска
+  run: |
+    echo "Очистка временных файлов..."
+    rm -rf $RUNNER_TEMP/*
+    rm -rf $RUNNER_WORKSPACE/*
+
+- name: Display Inputs
+  run: |
         echo "::group::User Environment Variables"
         echo "Displaying variables/inputs."
         echo "Manifest Branch: ${{ github.event.inputs.MANIFEST_BRANCH }}"
