@@ -63,7 +63,14 @@ jobs:
       contents: write
     steps:
     - name: Check Out
-      uses: actions/checkout@v3
+      - uses: actions/checkout@v3
+
+- name: Очистка диска
+  run: |
+    echo "Очистка временных файлов..."
+    rm -rf $RUNNER_TEMP/*
+    rm -rf $RUNNER_WORKSPACE/*
+
       
     - name: Display Inputs
       run: |
